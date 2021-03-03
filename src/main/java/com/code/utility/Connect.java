@@ -1,4 +1,4 @@
-package com.code.connect;
+package com.code.utility;
 import java.sql.*;
 
 public class Connect {

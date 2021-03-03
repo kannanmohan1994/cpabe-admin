@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.code.utility.Helper;
+
 public class LoginFrame extends JFrame implements ActionListener {
 	Container container = getContentPane();
 	JLabel titleLabel = new JLabel("ADMIN LOGIN");
@@ -26,7 +28,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	}
 
 	public void addComponentsToContainer() {
-		container.add(makeTitledPanel());
+		container.add(setupPanel());
 	}
 
 	public void addActionEvent() {
@@ -34,32 +36,19 @@ public class LoginFrame extends JFrame implements ActionListener {
 		resetButton.addActionListener(this);
 		showPassword.addActionListener(this);
 	}
-
-	public void addCompenenttoGrid(JPanel panel, Component comp, int x, int y, int height, int width, 
-			double weightx, double weighty, Insets inset, int align) {
-		GridBagConstraints constraint = new GridBagConstraints();
-		constraint.gridx = x;
-		constraint.gridy = y;
-		constraint.gridheight = height;
-		constraint.gridwidth = width;
-		constraint.weightx = weightx;
-		constraint.weighty = weighty;
-		constraint.insets = inset;
-		constraint.fill = align;
-		panel.add(comp, constraint);
-	}
-
-	public Component makeTitledPanel() {
+	
+	public Component setupPanel() {
 		GridBagLayout grid = new GridBagLayout();
 		JPanel p = new JPanel(grid);
-		addCompenenttoGrid(p, titleLabel, 0, 0, 1, 2, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.CENTER);
-		addCompenenttoGrid(p, userLabel, 0, 1, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
-		addCompenenttoGrid(p, userTextField, 1, 1, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
-		addCompenenttoGrid(p, passwordLabel, 0, 2, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
-		addCompenenttoGrid(p, passwordField, 1, 2, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
-		addCompenenttoGrid(p, showPassword, 0, 3, 1, 2, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.CENTER);
-		addCompenenttoGrid(p, loginButton, 0, 4, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
-		addCompenenttoGrid(p, resetButton, 1, 4, 1, 1, 1, 0, new Insets(10, 10, 0, 10), GridBagConstraints.HORIZONTAL);
+		Insets inset = new Insets(10, 10, 0, 10); 
+		Helper.addCompenenttoGrid(p, titleLabel, 0, 0, 1, 2, 1, 0, inset, GridBagConstraints.CENTER);
+		Helper.addCompenenttoGrid(p, userLabel, 0, 1, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
+		Helper.addCompenenttoGrid(p, userTextField, 1, 1, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
+		Helper.addCompenenttoGrid(p, passwordLabel, 0, 2, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
+		Helper.addCompenenttoGrid(p, passwordField, 1, 2, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
+		Helper.addCompenenttoGrid(p, showPassword, 0, 3, 1, 2, 1, 0, inset, GridBagConstraints.CENTER);
+		Helper.addCompenenttoGrid(p, loginButton, 0, 4, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
+		Helper.addCompenenttoGrid(p, resetButton, 1, 4, 1, 1, 1, 0, inset, GridBagConstraints.HORIZONTAL);
 		return p;
 	}
 
