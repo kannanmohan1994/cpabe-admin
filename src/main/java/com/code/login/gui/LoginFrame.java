@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.code.login.backend.Login;
 import com.code.utility.Helper;
 
 public class LoginFrame extends JFrame implements ActionListener {
@@ -18,12 +19,18 @@ public class LoginFrame extends JFrame implements ActionListener {
 	JCheckBox showPassword = new JCheckBox("Show Password");
 
 	LoginFrame() {
-		setLayoutManager();
+		initialSetup();
 		addComponentsToContainer();
-		addActionEvent();
+		addActionEvents();
 	}
 
-	public void setLayoutManager() {
+	public void initialSetup() {
+		setTitle("Admin App");
+        setVisible(true);
+        setSize(new Dimension(320, 240));
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 		container.setLayout(new BorderLayout());
 	}
 
@@ -31,7 +38,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		container.add(setupPanel());
 	}
 
-	public void addActionEvent() {
+	public void addActionEvents() {
 		loginButton.addActionListener(this);
 		resetButton.addActionListener(this);
 		showPassword.addActionListener(this);
@@ -57,13 +64,29 @@ public class LoginFrame extends JFrame implements ActionListener {
 			userTextField.setText("");
 			passwordField.setText("");
 		} else if (e.getSource() == loginButton) {
-
+			attemptLogin();
 		} else {
 			if (showPassword.isSelected()) {
 				passwordField.setEchoChar((char) 0);
 			} else {
 				passwordField.setEchoChar('*');
 			}
+		}
+	}
+	
+	//UI and Backend interface
+	public void attemptLogin() {
+		String userName = userTextField.getText().trim();
+		String password = passwordField.getText().trim();
+		if(!userName.isEmpty() && !password.isEmpty()) {
+			Login login = new Login(userName, password);
+			if(login.checkLoginDetailsCorrect()) {
+				Helper.showWarningBox(this, "Correct credentials", JOptionPane.PLAIN_MESSAGE);
+			} else {
+				Helper.showWarningBox(this, "Wrong credentials", JOptionPane.ERROR_MESSAGE);
+			}
+		} else {
+			Helper.showWarningBox(this, "Empty username or password", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
