@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.code.intro.gui.IntroFrame;
 import com.code.login.backend.Login;
 import com.code.utility.Helper;
 
@@ -18,7 +19,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	JButton resetButton = new JButton("Reset");
 	JCheckBox showPassword = new JCheckBox("Show Password");
 
-	LoginFrame() {
+	public LoginFrame() {
 		initialSetup();
 		addComponentsToContainer();
 		addActionEvents();
@@ -29,7 +30,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         setVisible(true);
         setSize(new Dimension(320, 240));
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
 		container.setLayout(new BorderLayout());
 	}
@@ -81,7 +82,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 		if(!userName.isEmpty() && !password.isEmpty()) {
 			Login login = new Login(userName, password);
 			if(login.checkLoginDetailsCorrect()) {
-				Helper.showWarningBox(this, "Correct credentials", JOptionPane.PLAIN_MESSAGE);
+				IntroFrame intro = new IntroFrame();
+				this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 			} else {
 				Helper.showWarningBox(this, "Wrong credentials", JOptionPane.ERROR_MESSAGE);
 			}
