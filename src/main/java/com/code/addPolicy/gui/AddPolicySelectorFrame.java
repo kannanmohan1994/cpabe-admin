@@ -1,4 +1,4 @@
-package com.code.viewAllUsers.gui;
+package com.code.addPolicy.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -9,40 +9,37 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import com.code.userobjects.UserDoctor;
-import com.code.userobjects.UserPatient;
-import com.code.utility.DatabaseFetch;
 import com.code.utility.Helper;
 import com.code.viewAllUsers.backend.ViewAllUsers;
+import com.code.viewAllUsers.gui.DoctorTableModel;
+import com.code.viewAllUsers.gui.PatientTableModel;
 
-public class ViewAllUsersFrame extends JFrame implements ActionListener {
-	String userTypeString[] = { "Doctor", "Patient" };
+public class AddPolicySelectorFrame  extends JFrame implements ActionListener {
+	Vector<String> userid;
+	Vector<Boolean> checkList;
 	ViewAllUsers viewAll = new ViewAllUsers();
-	DoctorTableModel dtm = new DoctorTableModel(viewAll.doctorList);
-	PatientTableModel ptm = new PatientTableModel(viewAll.patientList);
+	AddPolicySelectorTableModel model;
 	Container container = getContentPane();
-	JComboBox userTypeDropDown = new JComboBox(userTypeString);
 	JTable table = new JTable();
 	
-	
-	public ViewAllUsersFrame() {
+	public AddPolicySelectorFrame(Vector<String> uid, Vector<Boolean> checkList) {
+		this.userid = uid;
+		this.checkList = checkList;
 		initialSetup();
 		addComponentsToContainer();
 		addActionEvents();
 	}
 
 	public void initialSetup() {
-		setTitle("View All Users");
+		setTitle("Admin App");
 		setVisible(true);
 		setSize(new Dimension(320, 240));
 		setLocationRelativeTo(null);
@@ -58,14 +55,13 @@ public class ViewAllUsersFrame extends JFrame implements ActionListener {
 	}
 
 	public void addActionEvents() {
-		userTypeDropDown.addActionListener(this);
+		
 	}
 
 	public Component setupPanel() {
 		GridBagLayout grid = new GridBagLayout();
 		JPanel p = new JPanel(grid);
 		Insets inset = new Insets(5, 0, 5, 0);
-		Helper.addCompenenttoGrid(p, userTypeDropDown, 0, 0, 1, 1, 2, 1, inset, GridBagConstraints.CENTER);
 		Helper.addCompenenttoGrid(p, setupTable(), 0, 1, 1, 1, 2, 1, inset, GridBagConstraints.CENTER);
 		return p;
 	}
@@ -73,22 +69,23 @@ public class ViewAllUsersFrame extends JFrame implements ActionListener {
 	public JScrollPane setupTable() {
 		viewAll.fetchAllDoctors();
 		viewAll.fetchAllPatients();
-        table.setModel(dtm);
+        table.setModel(new AddPolicySelectorTableModel(userid, checkList));
         return new JScrollPane(table);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==userTypeDropDown) {
-			if(userTypeDropDown.getSelectedIndex() == 0) {
-				table.setModel(dtm);
-			} else {
-				table.setModel(ptm);
-			}
-		}
+		
 	}
 	
-	public static void main(String[] a) {
-		ViewAllUsersFrame viewAllUsers = new ViewAllUsersFrame();
+	public static void main(String[] args) {
+		Vector<String> uid = new Vector<String>();
+		uid.add("abc");
+		uid.add("def");
+		Vector<Boolean> checkL = new Vector<Boolean>();
+		checkL.add(false);
+		checkL.add(true);
+		AddPolicySelectorFrame frame = new AddPolicySelectorFrame(uid, checkL);
+
 	}
 
 }

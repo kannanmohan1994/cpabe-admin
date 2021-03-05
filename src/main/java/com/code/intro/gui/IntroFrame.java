@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.code.addUser.gui.AddUserFrame;
+import com.code.policyMgmt.gui.PolicyManagementFrame;
 import com.code.userMgmt.gui.UserManagementFrame;
 import com.code.utility.Helper;
 
@@ -50,7 +51,8 @@ public class IntroFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == userMgmtBtn) {
 			UserManagementFrame userMgmtFrame = new UserManagementFrame();
-			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+		} else {
+			PolicyManagementFrame pfram = new PolicyManagementFrame();
 		}
 	}
 	

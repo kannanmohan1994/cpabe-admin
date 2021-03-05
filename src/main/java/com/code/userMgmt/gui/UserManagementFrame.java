@@ -35,7 +35,7 @@ public class UserManagementFrame extends JFrame implements ActionListener {
 	}
 
 	public void initialSetup() {
-		setTitle("Admin App");
+		setTitle("User Management");
 		setVisible(true);
 		setSize(new Dimension(320, 240));
 		setLocationRelativeTo(null);

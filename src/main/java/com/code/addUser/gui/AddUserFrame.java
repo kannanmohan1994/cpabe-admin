@@ -47,7 +47,7 @@ public class AddUserFrame extends JFrame implements ActionListener {
 	}
 
 	public void initialSetup() {
-		setTitle("Admin App");
+		setTitle("Add user");
 		setVisible(true);
 		setSize(new Dimension(320, 400));
 		setLocationRelativeTo(null);

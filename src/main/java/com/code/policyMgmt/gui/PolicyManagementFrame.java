@@ -24,6 +24,7 @@ public class PolicyManagementFrame extends JFrame implements ActionListener {
 	Container container = getContentPane();
 	JButton viewAllPolicyBtn = new JButton("View all policies");
 	JButton addPolicyBtn = new JButton("Add policy");
+	JButton importPolicyBtn = new JButton("Import policies from file");
 	JButton deletePolicyBtn = new JButton("Delete policy");
 
 	public PolicyManagementFrame() {
@@ -33,7 +34,7 @@ public class PolicyManagementFrame extends JFrame implements ActionListener {
 	}
 
 	public void initialSetup() {
-		setTitle("Admin App");
+		setTitle("Policy Management");
 		setVisible(true);
 		setSize(new Dimension(320, 240));
 		setLocationRelativeTo(null);
@@ -49,6 +50,7 @@ public class PolicyManagementFrame extends JFrame implements ActionListener {
 	public void addActionEvents() {
 		viewAllPolicyBtn.addActionListener(this);
 		addPolicyBtn.addActionListener(this);
+		importPolicyBtn.addActionListener(this);
 		deletePolicyBtn.addActionListener(this);
 	}
 
@@ -58,6 +60,7 @@ public class PolicyManagementFrame extends JFrame implements ActionListener {
 		Insets inset = new Insets(5, 0, 5, 0);
 		Helper.addCompenenttoGrid(p, viewAllPolicyBtn, 0, 0, 1, 1, 1, 0, inset, GridBagConstraints.CENTER);
 		Helper.addCompenenttoGrid(p, addPolicyBtn, 0, 1, 1, 1, 1, 0, inset, GridBagConstraints.CENTER);
+		Helper.addCompenenttoGrid(p, importPolicyBtn, 0, 2, 1, 1, 1, 0, inset, GridBagConstraints.CENTER);
 		Helper.addCompenenttoGrid(p, deletePolicyBtn, 0, 3, 1, 1, 1, 0, inset, GridBagConstraints.CENTER);
 		return p;
 	}
