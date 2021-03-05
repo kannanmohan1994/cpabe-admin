@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import com.code.addUser.gui.AddUserFrame;
 import com.code.userMgmt.gui.UserManagementFrame;
 import com.code.utility.Helper;
 
@@ -51,7 +52,10 @@ public class IntroFrame extends JFrame implements ActionListener {
 			UserManagementFrame userMgmtFrame = new UserManagementFrame();
 			this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 		}
-
+	}
+	
+	public static void main(String[] a) {
+		IntroFrame introFrame = new IntroFrame();
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.code.utility;
 
 import java.awt.*;
+import java.util.Vector;
+
 import javax.swing.*;
 
 public class Helper {
@@ -20,5 +22,12 @@ public class Helper {
 
 	public static void showWarningBox(JFrame frame, String message, int messageType) {
 		JOptionPane.showMessageDialog(frame, message, "Information", messageType);
+	}
+	
+	public static void addFreshItemsComboBox(JComboBox jc, Vector<String> items) {
+		jc.removeAllItems();
+		for(int i=0; i<items.size(); i++) {
+			jc.addItem(items.get(i)); 
+		}
 	}
 }
