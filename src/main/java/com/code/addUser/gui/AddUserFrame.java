@@ -4,15 +4,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.*;
 
 import com.code.addUser.backend.AddUser;
-import com.code.intro.gui.IntroFrame;
-import com.code.login.backend.Login;
-import com.code.login.gui.LoginFrame;
 import com.code.userobjects.UserDoctor;
 import com.code.userobjects.UserPatient;
 import com.code.utility.DatabaseFetch;

@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import com.code.intro.gui.IntroFrame;
 import com.code.login.backend.Login;
+import com.code.mainMenu.gui.MainMenuFrame;
 import com.code.utility.Helper;
 
 public class LoginFrame extends JFrame implements ActionListener {
@@ -82,7 +82,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		if(!userName.isEmpty() && !password.isEmpty()) {
 			Login login = new Login(userName, password);
 			if(login.checkLoginDetailsCorrect()) {
-				IntroFrame intro = new IntroFrame();
+				MainMenuFrame frame = new MainMenuFrame();
 				this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 			} else {
 				Helper.showWarningBox(this, "Wrong credentials", JOptionPane.ERROR_MESSAGE);
