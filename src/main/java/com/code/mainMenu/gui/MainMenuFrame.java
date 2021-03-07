@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 
 import com.code.addPolicy.gui.AddPolicyFrame;
 import com.code.addUser.gui.AddUserFrame;
+import com.code.deletePolicy.gui.DeletePolicyFrame;
 import com.code.utility.Helper;
 import com.code.viewAllPolicies.gui.ViewAllPoliciesFrame;
 import com.code.viewAllUsers.gui.ViewAllUsersFrame;
@@ -88,7 +89,7 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 		} else if(e.getSource() == addPolicy) {
 			AddPolicyFrame frame = new AddPolicyFrame();
 		} else if(e.getSource() == deletePolicy) {
-			
+			DeletePolicyFrame dpFrame = new DeletePolicyFrame();
 		} else if(e.getSource() == viewAllPolicy) {
 			ViewAllPoliciesFrame frame = new ViewAllPoliciesFrame();
 		}

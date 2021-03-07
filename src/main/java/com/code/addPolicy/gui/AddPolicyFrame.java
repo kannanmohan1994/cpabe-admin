@@ -102,6 +102,8 @@ public class AddPolicyFrame extends JFrame implements ActionListener{
 		} else {
 			if(editPermitRadioBtn.isSelected()) {
 				addPolicy.actionAttributes = "edit";
+			} else {
+				addPolicy.actionAttributes = "view";
 			}
 			String policy = addPolicy.generatePolicy();
 			Helper.showWarningBox(this, policy, JOptionPane.INFORMATION_MESSAGE);
