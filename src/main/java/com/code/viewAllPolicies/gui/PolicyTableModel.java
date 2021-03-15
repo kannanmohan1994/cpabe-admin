@@ -1,4 +1,4 @@
-package com.code.viewAllUsers.backend;
+package com.code.viewAllPolicies.gui;
 
 import java.util.Vector;
 

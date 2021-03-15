@@ -16,9 +16,9 @@ public class AddPolicyFrame extends JFrame implements ActionListener{
 	JButton doctoridBtn = new JButton("Select doctor id options");
 	JButton doctorSpecialBtn = new JButton("Select doctor special options");
 	JButton doctorWardBtn = new JButton("Select doctor ward options");
-	JButton patientidBtn = new JButton("Select patient id options");
-	JButton patientSpecialBtn = new JButton("Select patient special options");
-	JButton patientWardBtn = new JButton("Select patient ward options");
+	JButton patientidBtn = new JButton("Select PHR id options");
+	JButton patientSpecialBtn = new JButton("Select PHR speciality options");
+	JButton patientWardBtn = new JButton("Select PHR ward options");
 	JButton confirmBtn = new JButton("Generate Policy");
 	ButtonGroup accessPermit = new ButtonGroup();
 	JRadioButton viewPermitRadioBtn = new JRadioButton("View access");
@@ -101,9 +101,9 @@ public class AddPolicyFrame extends JFrame implements ActionListener{
 					addPolicy.vectCheckList.get(tag));
 		} else {
 			if(editPermitRadioBtn.isSelected()) {
-				addPolicy.actionAttributes = "edit";
+				addPolicy.actionAttributes = "a:edit";
 			} else {
-				addPolicy.actionAttributes = "view";
+				addPolicy.actionAttributes = "a:view";
 			}
 			String policy = addPolicy.generatePolicy();
 			Helper.showWarningBox(this, policy, JOptionPane.INFORMATION_MESSAGE);

@@ -10,7 +10,7 @@ import com.code.utility.DatabaseFetch;
 public class AddPolicy {
 	public Vector<Vector<String>> vectItemList = new Vector<Vector<String>>();
 	public Vector<Vector<Boolean>> vectCheckList = new Vector<Vector<Boolean>>();
-	public String actionAttributes = "view";
+	public String actionAttributes = "a:view";
 	int doctorAttributeCount = 3;
 	String resultantPolicy = "";
 	
@@ -54,7 +54,7 @@ public class AddPolicy {
 			int attributesCountPolicy = 0;
 			for(int j=0; j<vectItemList.get(i).size(); j++) {
 				if((vectCheckList.get(i)).get(j)) {
-					String attribute = "p:"+(vectItemList.get(i)).get(j) + " ";
+					String attribute = "phr:"+(vectItemList.get(i)).get(j) + " ";
 					simplePolicy += attribute;
 					attributesCountPolicy++;
 				}

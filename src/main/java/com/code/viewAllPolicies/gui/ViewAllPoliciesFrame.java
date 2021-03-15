@@ -18,7 +18,6 @@ import javax.swing.JTable;
 
 import com.code.utility.Helper;
 import com.code.viewAllPolicies.backend.ViewAllPolicies;
-import com.code.viewAllUsers.backend.PolicyTableModel;
 
 public class ViewAllPoliciesFrame extends JFrame implements ActionListener {
 	

@@ -17,6 +17,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import com.code.addCustomPolicy.gui.AddCustomPolicyFrame;
 import com.code.addPolicy.gui.AddPolicyFrame;
 import com.code.addUser.gui.AddUserFrame;
 import com.code.deletePolicy.gui.DeletePolicyFrame;
@@ -35,6 +36,7 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 	JMenuItem deleteUser = new JMenuItem("Delete user");
 	JMenuItem viewAllUser = new JMenuItem("View all users");
 	JMenuItem addPolicy = new JMenuItem("Add policy");
+	JMenuItem addCustomPolicy = new JMenuItem("Add custom policy");
 	JMenuItem deletePolicy = new JMenuItem("Delete policy");
 	JMenuItem viewAllPolicy = new JMenuItem("View all policies");
 	
@@ -60,6 +62,7 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 		userMgmtMenu.add(deleteUser);
 		userMgmtMenu.add(viewAllUser);
 		policyMgmtMenu.add(addPolicy);
+		policyMgmtMenu.add(addCustomPolicy);
 		policyMgmtMenu.add(deletePolicy);
 		policyMgmtMenu.add(viewAllPolicy);
 		menuBar.add(userMgmtMenu);
@@ -73,6 +76,7 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 		deleteUser.addActionListener(this);
 		viewAllUser.addActionListener(this);
 		addPolicy.addActionListener(this);
+		addCustomPolicy.addActionListener(this);
 		deletePolicy.addActionListener(this);
 		viewAllPolicy.addActionListener(this);
 	}
@@ -88,6 +92,8 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 			ViewAllUsersFrame frame = new ViewAllUsersFrame();
 		} else if(e.getSource() == addPolicy) {
 			AddPolicyFrame frame = new AddPolicyFrame();
+		} else if(e.getSource() == addCustomPolicy) {
+			AddCustomPolicyFrame frame = new AddCustomPolicyFrame();
 		} else if(e.getSource() == deletePolicy) {
 			DeletePolicyFrame dpFrame = new DeletePolicyFrame();
 		} else if(e.getSource() == viewAllPolicy) {

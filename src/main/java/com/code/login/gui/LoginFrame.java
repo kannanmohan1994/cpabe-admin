@@ -91,4 +91,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 			Helper.showWarningBox(this, "Empty username or password", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+	public static void main(String[] a){
+        LoginFrame frame=new LoginFrame();
+    }
 }
