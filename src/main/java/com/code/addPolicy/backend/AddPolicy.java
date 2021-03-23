@@ -1,11 +1,17 @@
 package com.code.addPolicy.backend;
 
+import java.io.File;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Vector;
 
+import com.code.cpabe_api.junwei.bswabe.Bswabe;
+import com.code.cpabe_api.junwei.bswabe.BswabePolicy;
 import com.code.utility.Connect;
 import com.code.utility.DatabaseFetch;
+import com.code.utility.Helper;
+import com.code.utility.StaticElements;
 
 public class AddPolicy {
 	public Vector<Vector<String>> vectItemList = new Vector<Vector<String>>();
@@ -81,6 +87,9 @@ public class AddPolicy {
 			Statement stmt = conn.createStatement();
 			String query = "INSERT into POLICYSET (policy) VALUES ('"+resultantPolicy+"');";
 			if((stmt.executeUpdate(query))>0){
+				String policySet = getPolicySet();
+				BswabePolicy policyTree = Bswabe.parsePolicyPostfix(policySet);
+				storePolicyTree(policyTree);
 				return "Policy addition Successfull!";
 			}
 		} catch (Exception e) {
@@ -89,5 +98,39 @@ public class AddPolicy {
 			Connect.endConnection(conn);
 		}
 		return "Couldn't add policy because of DB server issue or the policy already exists ";
+	}
+	
+	public String getPolicySet() {
+		String policySet = "";
+		Connection conn = Connect.startConnection();
+		try {
+			Statement stmt = conn.createStatement();
+			String query = "SELECT * FROM policyset;";
+			ResultSet rs = stmt.executeQuery(query);
+			int count = 0;
+			while (rs.next()) {
+				policySet += rs.getString(2) + " ";
+				count++;
+			}
+			policySet += "1of" + count;
+		} catch (Exception e) {
+			System.out.print(e);
+		} finally {
+			Connect.endConnection(conn);
+		}
+		return policySet;
+	}
+	
+	public void storePolicyTree(BswabePolicy bp) {
+		String serialized = "";
+		try {
+			serialized = Helper.objectToString(bp);
+			File myFile = new File(StaticElements.policytree);
+			myFile.createNewFile();
+			Helper.writeStringtoFile(StaticElements.policytree, serialized);
+		}
+		catch(Exception e) {
+			System.out.println("Error occured while serialization");
+		}
 	}
 }
