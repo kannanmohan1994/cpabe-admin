@@ -10,4 +10,6 @@ To run this application you must have the following softwares installed:
 
 Once all these are installed clone the project in your system. Use the cpabe.sql file to import database structure.
           
-Another application for the user (doctor/patient) will be build following this application. That application will focus on permitting access based on the policies that are written by admin through the ADMIN app. Once that application is also ready the link will be provided here.
+Another application for the user (doctor/patient) will be build following this application. That application will focus on permitting access based on the policies that are written by admin through the ADMIN app. The application is build in the following repository:
+
+https://github.com/kannanmohan1994/cpabe-user
