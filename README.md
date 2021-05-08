@@ -3,13 +3,14 @@
 **A GUI based application for Access Control Management in Patient Health Record System.** 
 
 **To run this application you must follow the below procedures:**
-1. Eclipse IDE
-2. Maven Software installed inside eclipse to install dependencies provided in pom.xml
+1. Install Eclipse IDE
+2. Install maven software inside eclipse to install dependencies provided in pom.xml
 3. XAMPP software for mySQL database (Storing data) and PHPmyAdmin (For easy DB Management)
 4. Once all the above are installed clone this project in your system. 
 5. Use the cpabe.sql file inside the project folder to import database structure. 
    For importing just go to https://localhost/phpmyadmin/ and then press import and chose the cpabe.sql file 
-6. Run the LoginFrame.java as Java Application in Eclipse.
+6. Run pom.xml file to download and install dependencies. 
+7. Run the LoginFrame.java as Java Application in Eclipse.
 
 **Functionalities of Admin app:**
 1. Add a patient/doctor.
