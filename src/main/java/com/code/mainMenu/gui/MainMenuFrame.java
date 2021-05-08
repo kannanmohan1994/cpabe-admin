@@ -58,8 +58,8 @@ public class MainMenuFrame extends JFrame implements ActionListener {
 
 	public void addComponentsToContainer() {
 		userMgmtMenu.add(addUser);
-		userMgmtMenu.add(editUser);
-		userMgmtMenu.add(deleteUser);
+		//userMgmtMenu.add(editUser);
+		//userMgmtMenu.add(deleteUser);
 		userMgmtMenu.add(viewAllUser);
 		policyMgmtMenu.add(addPolicy);
 		policyMgmtMenu.add(addCustomPolicy);
