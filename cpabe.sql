@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 08:48 AM
+-- Generation Time: May 08, 2021 at 06:32 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
 
@@ -85,8 +85,12 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`emailid`, `name`, `special`, `ward`, `password`) VALUES
-('janedoe@gmail.com', 'Jane Doe', 'CARDIO', 'CRDWARD3', 'janedoe'),
-('johndoe@gmail.com', 'John Doe', 'MEDICINE', 'MDCWARD1', 'johndoe'),
+('abcd', 'abcd', 'MEDICINE', 'MDCWARD3', 'abcd'),
+('abcde', 'abcde', 'MEDICINE', 'MDCWARD6', 'abcde'),
+('cardiodoc', 'cardiodoc', 'CARDIO', 'CRDWARD1', 'cardiodoc'),
+('johndoe@gmail.com', 'John Doe', 'CARDIO', 'CRDWARD3', 'johndoe'),
+('justin', 'justin', 'CARDIO', 'CRDWARD2', 'just'),
+('kannan', 'kannan', 'MEDICINE', 'MDCWARD7', 'kannan'),
 ('shiyafthayyil@gmail.com', 'shiyaf', 'MEDICINE', 'MDCWARD5', 'shiyaf');
 
 -- --------------------------------------------------------
@@ -110,7 +114,32 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`emailid`, `name`, `special`, `ward`, `password`, `diagnosis`, `treatment`) VALUES
-('johnas@gmail.com', 'johnas kahnwald', 'CARDIO', 'CRDWARD3', 'dark', NULL, NULL);
+('cardiodemo', 'cardiodemo', 'CARDIO', 'CRDWARD1', 'cardiodemo', NULL, NULL),
+('johnas@gmail.com', 'johnas kahnwald', 'CARDIO', 'CRDWARD3', 'dark', NULL, NULL),
+('kiran', 'kiran', 'CARDIO', 'CRDWARD2', '123', 'cough', 'vicks'),
+('patient', 'patient', 'MEDICINE', 'MDCWARD3', 'patient', 'Fever	', 'Dolo650'),
+('tikku', 'tikku', 'MEDICINE', 'MDCWARD6', 'tikku', 'Fever	', 'dolo');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `policyset`
+--
+
+CREATE TABLE `policyset` (
+  `id` int(11) NOT NULL,
+  `POLICY` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `policyset`
+--
+
+INSERT INTO `policyset` (`id`, `POLICY`) VALUES
+(522, 'd:CARDIO 1of1 phr:CARDIO 1of1 a:view 1of1 3of3'),
+(523, 'd:MEDICINE 1of1 phr:MEDICINE 1of1 a:view 1of1 3of3'),
+(524, 'd:MDCWARD3 1of1 phr:MDCWARD3 1of1 a:edit 1of1 3of3'),
+(525, 'd:MDCWARD6 1of1 phr:MDCWARD6 1of1 a:edit 1of1 3of3');
 
 --
 -- Indexes for dumped tables
@@ -133,6 +162,22 @@ ALTER TABLE `doctor`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`emailid`);
+
+--
+-- Indexes for table `policyset`
+--
+ALTER TABLE `policyset`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `policyset`
+--
+ALTER TABLE `policyset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=526;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
